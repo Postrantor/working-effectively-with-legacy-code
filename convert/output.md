@@ -1,6 +1,6 @@
 ---
 tip: translate by openai@2023-08-08 13:33:41
-...
+---
 
 ### [Foreword](#contents)
 
