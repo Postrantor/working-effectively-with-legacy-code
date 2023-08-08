@@ -8,7 +8,7 @@
 
 []{#_bookmark12 .anchor}Changing code is great. It's what we do for a living. But there are ways of changing code that make life difficult, and there are ways that make it much easier. In the industry, we haven't spoken about that much. The closest we've gotten is the literature on refactoring. I think we can broaden the discussion a bit and talk about how to deal with code in the thorniest of situations. To do that, we have to dig deeper into the mechanics of change.
 
-> []｛#_bookmark12.锚点｝更改代码非常棒。这就是我们的谋生之道。但是，有些更改代码的方法会让生活变得困难，也有一些方法会让它变得更容易。在这个行业，我们还没有谈论那么多。我们得到的最接近的是关于重构的文献。我认为我们可以扩大讨论范围，讨论如何在最棘手的情况下处理代码。要做到这一点，我们必须深入研究变革的机制。
+> 更改代码非常棒。这就是我们的谋生之道。但是，有些更改代码的方法会让生活变得困难，也有一些方法会让它变得更容易。在这个行业，我们还没有谈论那么多。我们得到的最接近的是关于重构的文献。我认为我们可以扩大讨论范围，讨论如何在最棘手的情况下处理代码。要做到这一点，我们必须深入研究变革的机制。
 
 #### [Four Reasons to Change Software](#contents)
 
@@ -16,13 +16,10 @@ For simplicity's sake, let's look at four primary reasons to change software.
 
 > 为了简单起见，让我们来看一下更改软件的四个主要原因。
 
-1.  Adding a feature
-
-2.  Fixing a bug
-
-3.  Improving the design
-
-4.  Optimizing resource usage
+1. Adding a feature
+2. Fixing a bug
+3. Improving the design
+4. Optimizing resource usage
 
 ##### Adding Features and Fixing Bugs
 
@@ -30,19 +27,13 @@ Adding a feature seems like the most straightforward type of change to make. The
 
 > 添加功能似乎是最简单的更改类型。软件的行为是单向的，用户说系统还需要做一些其他的事情。
 
-Suppose that we are working on a web-based application, and a manager tells us that she wants the company logo moved from the left side of a page to the right side. We talk to her about it and discover it isn't quite so simple. She wants to move the logo, but she wants other changes, too. She'd like to make it animated for the next release. Is this fixing a bug or adding a new feature? It depends on your point of view. From the point of view of the customer, she is definitely asking us to fix a problem. Maybe she saw the site and attended a
+Suppose that we are working on a web-based application, and a manager tells us that she wants the company logo moved from the left side of a page to the right side. We talk to her about it and discover it isn't quite so simple. She wants to move the logo, but she wants other changes, too. She'd like to make it animated for the next release. Is this fixing a bug or adding a new feature? It depends on your point of view. From the point of view of the customer, she is definitely asking us to fix a problem. Maybe she saw the site and attended a meeting with people in her department, and they decided to change the logo placement and ask for a bit more functionality. From a developer's point of view, the change could be seen as a completely new feature. "If they just stopped changing their minds, we'd be done by now." But in some organizations the logo move is seen as just a bug fix, regardless of the fact that the team is going to have to do a lot of fresh work.
 
-> 假设我们正在开发一个基于 web 的应用程序，一位经理告诉我们，她希望将公司徽标从页面的左侧移到右侧。我们和她聊了聊，发现事情并不是那么简单。她想移动标志，但她也想做其他改变。她想为下一次发行制作动画。这是在修复 bug 还是添加新功能？这取决于你的观点。从客户的角度来看，她肯定是在要求我们解决问题。也许她看到了这个网站并参加了
-
-####### 3
-
-[]{#_bookmark13 .anchor}meeting with people in her department, and they decided to change the logo placement and ask for a bit more functionality. From a developer's point of view, the change could be seen as a completely new feature. "If they just stopped changing their minds, we'd be done by now." But in some organizations the logo move is seen as just a bug fix, regardless of the fact that the team is going to have to do a lot of fresh work.
-
-> []｛#_bookmark13.anchor｝与她所在部门的人员会面，他们决定更改徽标的位置，并要求提供更多功能。从开发人员的角度来看，这一变化可以被视为一个全新的功能。“如果他们停止改变主意，我们现在就完了。”但在一些组织中，标志的移动被视为只是一个错误修复，而不管团队将不得不做很多新的工作。
+> 假设我们正在开发一个基于 web 的应用程序，一位经理告诉我们，她希望将公司徽标从页面的左侧移到右侧。我们和她聊了聊，发现事情并不是那么简单。她想移动标志，但她也想做其他改变。她想为下一次发行制作动画。**这是在修复 bug 还是添加新功能？这取决于你的观点**。从客户的角度来看，她肯定是在要求我们解决问题。也许她看到了这个网站并参加了与她所在部门的人员会面，他们决定更改徽标的位置，并要求提供更多功能。从开发人员的角度来看，这一变化可以被视为一个全新的功能。“如果他们停止改变主意，我们现在就完了。”但在一些组织中，标志的移动被视为只是一个错误修复，而不管团队将不得不做很多新的工作。
 
 It is tempting to say that all of this is just subjective. You see it as a bug fix, and I see it as a feature, and that's the end of it. Sadly, though, in many organizations, bug fixes and features have to be tracked and accounted for separately because of contracts or quality initiatives. At the people level, we can go back and forth endlessly about whether we are adding features or fixing bugs, but it is all just changing code and other artifacts. Unfortunately, this talk about bugfixing and feature addition masks something that is much more important to us technically: behavioral change. There is a big difference between adding new behavior and changing old behavior.
 
-> 人们很容易说，所有这些都只是主观的。你把它看作是一个 bug 修复，我把它看作一个功能，就这样结束了。然而，可悲的是，在许多组织中，由于合同或质量计划的原因，bug 修复和功能必须单独跟踪和说明。在人员级别，我们可以无休止地来回讨论是添加功能还是修复 bug，但这都只是更改代码和其他工件。不幸的是，这种关于 bug 修复和特性添加的讨论掩盖了对我们来说更重要的东西：行为改变。添加新行为和更改旧行为之间有很大的区别。
+> 人们很容易说，所有这些都只是主观的。你把它看作是一个 bug 修复，我把它看作一个功能，就这样结束了。然而，可悲的是，在许多组织中，由于**合同或质量计划的原因，bug 修复和功能必须单独跟踪和说明**。在人员级别，我们可以无休止地来回讨论是添加功能还是修复 bug，但这都只是更改代码和其他工件。不幸的是，这种关于 bug 修复和特性添加的讨论掩盖了对我们来说更重要的东西：**行为改变。添加新行为和更改旧行为之间有很大的区别**。
 
 In the company logo example, are we adding behavior? Yes. After the change, the system will display a logo on the right side of the page. Are we getting rid of any behavior? Yes, there won't be a logo on the left side.
 
@@ -56,49 +47,24 @@ Are we changing behavior, adding it, or both?
 
 It turns out that, for us, we can draw a distinction that is more useful to us as programmers. If we have to modify code (and HTML kind of counts as code), we could be changing behavior. If we are only adding code and calling it, we are often adding behavior. Let's look at another example. Here is a method on a Java class:
 
-> 事实证明，对我们来说，我们可以做出对我们程序员更有用的区分。如果我们必须修改代码（HTML 算是代码），我们可能会改变行为。如果我们只是添加代码并调用它，那么我们通常是在添加行为。让我们看另一个例子。下面是 Java 类上的一个方法：
+> 事实证明，对我们来说，我们可以做出对我们程序员更有用的区分。如果我们必须修改代码(HTML 算是代码)，我们可能会改变行为。如果我们只是添加代码并调用它，那么我们通常是在添加行为。让我们看另一个例子。下面是 Java 类上的一个方法：
 
-public class CDPlayer
-
-{
-
-public void addTrackListing(Track track) {
-
-\...
-
+```java
+public class CDPlayer {
+  public void addTrackListing(Track track) { ... }
 }
+```
 
-\...
+The class has a method that enables us to add track listings. Let's add another method that lets us replace track listings.
 
+```java
+public class CDPlayer {
+  public void addTrackListing(Track track) { ... }
+  public void replaceTrackListing(String name, Track track) { ... }
 }
+```
 
-The class has a method that enables us to add track listings. Let's add
-
-another method that lets us replace track listings.
-
-[]{#_bookmark14 .anchor}public class CDPlayer
-
-{
-
-public void addTrackListing(Track track) {
-
-\...
-
-}
-
-public void replaceTrackListing(String name, Track track) {
-
-\...
-
-}
-
-\...
-
-}
-
-When we added that method, did we add new behavior to our application or
-
-change it? The answer is: neither. Adding a method doesn't change behavior unless the method is called somehow.
+When we added that method, did we add new behavior to our application or change it? The answer is: neither. Adding a method doesn't change behavior unless the method is called somehow.
 
 > 改变它？答案是：两者都不是。添加方法不会改变行为，除非以某种方式调用该方法。
 
@@ -114,27 +80,27 @@ Design improvement is a different kind of software change. When we want to alter
 
 The act of improving design without changing its behavior is called _refactoring_. The idea behind refactoring is that we can make software more maintainable without changing behavior if we write tests to make sure that existing behavior doesn't change and take small steps to verify that all along the process. People have been cleaning up code in systems for years, but only in the last few years has refactoring taken off. Refactoring differs from general cleanup in that we aren't just doing low-risk things such as reformatting source code, or invasive and risky things such as rewriting chunks of it. Instead, we are making a series of small structural modifications, supported by tests to make the code easier to change. The key thing about refactoring from a change point of view is that there aren't supposed to be any functional changes when you refactor (although behavior can change somewhat because the structural changes that you make can alter performance, for better or worse).
 
-> 在不改变其行为的情况下改进设计的行为称为重构。重构背后的理念是，如果我们编写测试以确保现有行为不会改变，并在整个过程中采取小步骤来验证这一点，我们就可以在不改变行为的情况下使软件更具可维护性。多年来，人们一直在清理系统中的代码，但直到最近几年才开始进行重构。重构与一般清理的不同之处在于，我们不仅仅是在做低风险的事情，比如重新格式化源代码，或者进行侵入性和风险性的事情，例如重写大块代码。相反，我们正在进行一系列小的结构修改，由测试支持，使代码更易于更改。从变化的角度来看，重构的关键是重构时不应该有任何功能性的变化（尽管行为可能会发生一些变化，因为你所做的结构变化可能会改变性能，无论好坏）。
+> **在不改变其行为的情况下改进设计的行为称为重构。重构背后的理念是，如果我们编写测试以确保现有行为不会改变，并在整个过程中采取小步骤来验证这一点，我们就可以在不改变行为的情况下使软件更具可维护性。** 多年来，人们一直在清理系统中的代码，但直到最近几年才开始进行重构。重构与一般清理的不同之处在于，我们不仅仅是在做低风险的事情，比如重新格式化源代码，或者进行侵入性和风险性的事情，例如重写大块代码。相反，我们正在进行一系列小的结构修改，由测试支持，使代码更易于更改。从变化的角度来看，重构的关键是重构时不应该有任何功能性的变化(尽管行为可能会发生一些变化，因为你所做的结构变化可能会改变性能，无论好坏)。
 
 ##### Optimization
 
 Optimization is like refactoring, but when we do it, we have a different goal. With both refactoring and optimization, we say, "We're going to keep functionality exactly the same when we make changes, but we are going to change something else." In refactoring, the "something else" is program structure; we want to make it easier to maintain. In optimization, the "something else" is some resource used by the program, usually time or memory.
 
-> 优化就像重构，但当我们这样做时，我们有一个不同的目标。对于重构和优化，我们说，“当我们做出改变时，我们会保持功能完全相同，但我们会改变其他东西。”在重构中，“其他东西”是程序结构；我们想让它更容易维护。在优化中，“其他东西”是程序使用的一些资源，通常是时间或内存。
+> **优化就像重构**，但当我们这样做时，我们有一个不同的目标。对于重构和优化，我们说，“当我们做出改变时，我们会保持功能完全相同，但我们会改变其他东西。”在重构中，“其他东西”是程序结构；我们想让它更容易维护。在优化中，“其他东西”是程序使用的一些资源，通常是时间或内存。
 
 ##### Putting It All Together
 
 It might seem strange that refactoring and optimization are kind of similar. They seem much closer to each other than adding features or fixing bugs. But is this really true? The thing that is common between refactoring and optimization is that we hold functionality invariant while we let something else change.
 
-> 重构和优化有点相似，这可能看起来很奇怪。它们似乎比添加功能或修复 bug 更接近。但这真的是真的吗？重构和优化之间的共同点是，当我们让其他东西改变时，我们保持功能不变。
+> 重构和优化有点相似，这可能看起来很奇怪。它们似乎比添加功能或修复 bug 更接近。但这真的是真的吗？**重构和优化之间的共同点是，当我们让其他东西改变时，我们保持功能不变**。
 
 In general, three different things can change when we do work in a system: structure, functionality, and resource usage.
 
-> 一般来说，当我们在一个系统中工作时，有三件不同的事情可能会发生变化：结构、功能和资源使用。
+> 一般来说，当我们在一个系统中工作时，**有三件不同的事情可能会发生变化：结构、功能和资源使用**。
 
 Let's look at what usually changes and what stays more or less the same when we make four different kinds of changes (yes, often all three change, but let's look at what is typical):
 
-> 让我们看看当我们做出四种不同的改变时，通常会发生什么变化，以及什么或多或少保持不变（是的，通常三种都会发生变化，但让我们看看什么是典型的）：
+> 让我们看看当我们做出四种不同的改变时，通常会发生什么变化，以及什么或多或少保持不变(是的，通常三种都会发生变化，但让我们看看什么是典型的)：
 
 +------------------+------------------------+--------------------+-------------------+------------------+
 | | > **Adding a Feature** | > **Fixing a Bug** | > **Refactoring** | > **Optimizing** |
@@ -168,7 +134,7 @@ Superficially, refactoring and optimization do look very similar. They hold func
 
 Feature addition and bug fixing are very much like refactoring and optimization. In all four cases, we want to change some functionality, some behavior, but we want to preserve much more (see Figure 1.1).
 
-> 功能添加和错误修复非常像重构和优化。在这四种情况下，我们都希望更改一些功能和行为，但我们希望保留更多（见图 1.1）。
+> 功能添加和错误修复非常像重构和优化。在这四种情况下，我们都希望更改一些功能和行为，但我们希望保留更多(见图 1.1)。
 
 []{#_bookmark17 .anchor}Existing Behavior New Behavior
 
@@ -216,7 +182,7 @@ We've talked about how avoiding change is a bad thing, but what is our alternati
 
 [[]{#_bookmark20 .anchor}]{#_bookmark19 .anchor}[**Chapter 2**](#contents)
 
-> [[]{#_bookmark20.anchor}]{#_blaookmark19.anchor}[**第二章**]（#contents）
+> [[]{#_bookmark20.anchor}]{#_blaookmark19.anchor}[**第二章**](#contents)
 
 ### [Working with Feedback](#contents)
 
@@ -302,7 +268,7 @@ The term _unit test_ has a long history in software development. Common to most 
 
 Can we ever test only one function or one class? In procedural systems, it is often hard to test functions in isolation. Top-level functions call other functions, which call other functions, all the way down to the machine level. In object-oriented systems, it is a little easier to test classes in isolation, but the fact is, classes don't generally live in isolation. Think about all of the classes you've ever written that don't use other classes. They are pretty rare, aren't they? Usually they are little data classes or data structure classes such as stacks and queues (and even these might use other classes).
 
-> 我们可以只测试一个函数或一个类吗？在过程系统中，通常很难单独测试函数。顶级函数调用其他函数，这些函数调用其他功能，一直到机器级别。在面向对象的系统中，隔离测试类稍微容易一些，但事实是，类通常不会隔离。想想你写过的所有不使用其他类的类。它们非常罕见，不是吗？通常，它们是小数据类或数据结构类，如堆栈和队列（甚至可能使用其他类）。
+> 我们可以只测试一个函数或一个类吗？在过程系统中，通常很难单独测试函数。顶级函数调用其他函数，这些函数调用其他功能，一直到机器级别。在面向对象的系统中，隔离测试类稍微容易一些，但事实是，类通常不会隔离。想想你写过的所有不使用其他类的类。它们非常罕见，不是吗？通常，它们是小数据类或数据结构类，如堆栈和队列(甚至可能使用其他类)。
 
 Testing in isolation is an important part of the definition of a unit test, but why is it important? After all, many errors are possible when pieces of software are integrated. Shouldn't large tests that cover broad functional areas of code be more important? Well, they are important, I won't deny that, but there are a few problems with large tests:
 
@@ -398,7 +364,7 @@ So, how do we do it? How do we get tests in place without changing code? The sad
 
 In the Invoice example we can try to test at a higher level. If it is hard to write tests without changing a particular class, sometimes testing a class that uses it is easier; regardless, we usually have to break dependencies between classes someplace. In this case, we can break the dependency on InvoiceUpdateServlet by passing the one thing that InvoiceUpdateResponder really needs. It needs the collection of invoice IDs that the InvoiceUpdateServlet holds. We can also break the dependency that InvoiceUpdateResponder has on DBConnection by introducing an interface (IDBConnection) and changing the InvoiceUpdateResponder so that it uses the interface instead. Figure 2.2 shows the state of these classes after the changes.
 
-> 在 Invoice 示例中，我们可以尝试在更高级别进行测试。如果在不更改特定类的情况下编写测试很困难，那么有时测试使用它的类会更容易；不管怎样，我们通常必须在某个地方打破类之间的依赖关系。在这种情况下，我们可以通过传递 InvoiceUpdateResponder 真正需要的一件事来打破对 InvoiceUpdate-Serverlet 的依赖。它需要 InvoiceUpdateServlet 持有的发票 ID 的集合。我们还可以通过引入接口（IDBConnection）并更改 InvoiceUpdateResponder 以使其使用该接口来打破 InvoiceUpdateResponse 对 DBConnection 的依赖。图 2.2 显示了更改后这些类的状态。
+> 在 Invoice 示例中，我们可以尝试在更高级别进行测试。如果在不更改特定类的情况下编写测试很困难，那么有时测试使用它的类会更容易；不管怎样，我们通常必须在某个地方打破类之间的依赖关系。在这种情况下，我们可以通过传递 InvoiceUpdateResponder 真正需要的一件事来打破对 InvoiceUpdate-Serverlet 的依赖。它需要 InvoiceUpdateServlet 持有的发票 ID 的集合。我们还可以通过引入接口(IDBConnection)并更改 InvoiceUpdateResponder 以使其使用该接口来打破 InvoiceUpdateResponse 对 DBConnection 的依赖。图 2.2 显示了更改后这些类的状态。
 
 +---------------------------------------------------------+----------------------------------------------------------------------------------------+
 | > []{#_bookmark30 .anchor}**«interface» IDBConnection** | |
@@ -416,7 +382,7 @@ In the Invoice example we can try to test at a higher level. If it is hard to wr
 
 Is this safe to do these refactorings without tests? It can be. These refactorings are named _Primitivize Parameter (385)_ and _Extract Interface (362)_, respectively. They are described in the dependency breaking techniques catalog at the end of the book. When we break dependencies, we can often write tests that make more invasive changes safer. The trick is to do these initial refactorings very conservatively.
 
-> 在没有测试的情况下进行这些重构安全吗？可以。这些重构分别命名为*Primitialize Parameter（385）*和*Extract Interface（362）*。它们在本书末尾的依赖性打破技术目录中进行了描述。当我们打破依赖关系时，我们通常可以编写测试，使更具侵入性的更改更安全。诀窍是非常保守地进行这些初始重构。
+> 在没有测试的情况下进行这些重构安全吗？可以。这些重构分别命名为*Primitialize Parameter(385)*和*Extract Interface(362)*。它们在本书末尾的依赖性打破技术目录中进行了描述。当我们打破依赖关系时，我们通常可以编写测试，使更具侵入性的更改更安全。诀窍是非常保守地进行这些初始重构。
 
 Being conservative is the right thing to do when we can possibly introduce errors, but sometimes when we break dependencies to cover code, it doesn't turn out as nicely as what we did in the previous example. We might introduce parameters to methods that aren't strictly needed in production code, or we might break apart classes in odd ways just to be able to get tests in place. When we do that, we might end up making the code look a little poorer in that area. If we were being less conservative, we'd just fix it immediately. We can do that,
 
@@ -482,7 +448,7 @@ I find that the tests I write in legacy code are somewhat different from the tes
 
 I advocate using test-driven development (TDD) to add features in legacy code. There is a description of TDD and some other feature addition techniques in Chapter 8, _How Do I Add a Feature?_ After making changes in legacy code, we often are better versed with its problems, and the tests we've written to add features often give us some cover to do some refactoring. Chapter 20, _This Class Is Too Big and I Don't Want It to Get Any Bigger_; Chapter 22, _I Need to Change a Monster Method and I Can't Write Tests for It_; and Chapter 21, _I'm Changing the Same Code All Over the Place_ cover many of the techniques you can use to start to move your legacy code toward better structure. Remember that the things I describe in these chapters are "baby steps." They don't show you how to make your design ideal, clean, or pattern-enriched. Plenty of books show how to do those things, and when you have the opportunity to use those techniques, I encourage you to do so. These chapters show you how to make design better, where "better" is context dependent and often simply a few steps more maintainable than the design was before. But don't discount this work. Often the simplest things, such as breaking down a large class just to make it easier to work with, can make a significant difference in applications, despite being somewhat mechanical.
 
-> 我主张使用测试驱动开发（TDD）在遗留代码中添加特性。第 8 章“如何添加特性？”中介绍了 TDD 和其他一些特性添加技术在对遗留代码进行更改后，我们通常会更好地了解其问题，并且我们为添加特性而编写的测试通常会为我们进行一些重构提供一些掩护。第 20 章，“这个班太大了，我不想它变得更大”；第 22 章，“我需要改变一个怪物的方法，但我不能为它写测试”；第 21 章“我到处都在使用相同的代码”涵盖了许多可以用来开始将遗留代码推向更好结构的技术。请记住，我在这些章节中描述的是“小步”。它们并没有向你展示如何使你的设计变得理想、干净或丰富。很多书都展示了如何做这些事情，当你有机会使用这些技术时，我鼓励你这样做。这些章节向你展示了如何让设计变得更好，其中“更好”取决于上下文，通常只是比以前的设计更容易维护几个步骤。但不要低估这项工作。通常，最简单的事情，比如分解一个大类以使其更容易使用，可以在应用程序中产生重大影响，尽管这有点机械化。
+> 我主张使用测试驱动开发(TDD)在遗留代码中添加特性。第 8 章“如何添加特性？”中介绍了 TDD 和其他一些特性添加技术在对遗留代码进行更改后，我们通常会更好地了解其问题，并且我们为添加特性而编写的测试通常会为我们进行一些重构提供一些掩护。第 20 章，“这个班太大了，我不想它变得更大”；第 22 章，“我需要改变一个怪物的方法，但我不能为它写测试”；第 21 章“我到处都在使用相同的代码”涵盖了许多可以用来开始将遗留代码推向更好结构的技术。请记住，我在这些章节中描述的是“小步”。它们并没有向你展示如何使你的设计变得理想、干净或丰富。很多书都展示了如何做这些事情，当你有机会使用这些技术时，我鼓励你这样做。这些章节向你展示了如何让设计变得更好，其中“更好”取决于上下文，通常只是比以前的设计更容易维护几个步骤。但不要低估这项工作。通常，最简单的事情，比如分解一个大类以使其更容易使用，可以在应用程序中产生重大影响，尽管这有点机械化。
 
 ##### The Rest of This Book
 
@@ -492,7 +458,7 @@ The rest of this book shows you how to make changes in legacy code. The next two
 
 [[]{#_bookmark36 .anchor}]{#_bookmark35 .anchor}[**Chapter 3**](#contents)
 
-> [[]{#_bookmark36.anchor}]{#_blaookmark35.anchor}[**第三章**]（#contents）
+> [[]{#_bookmark36.anchor}]{#_blaookmark35.anchor}[**第三章**](#contents)
 
 ### [Sensing and Separation](#contents)
 
@@ -576,7 +542,7 @@ One of the big problems that we confront in legacy code work is dependency. If w
 
 A _fake object_ is an object that impersonates some collaborator of your class when it is being tested. Here is an example. In a point-of-sale system, we have a class called Sale (see Figure 3.1). It has a method called scan() that accepts a bar code for some item that a customer wants to buy. Whenever scan() is called, the Sale object needs to display the name of the item that was scanned, along with its price on a cash register display.
 
-> 伪对象是在测试时模拟类的某个合作者的对象。下面是一个例子。在销售点系统中，我们有一个名为 sale 的类（见图 3.1）。它有一个称为 scan（）的方法，接受客户想要购买的商品的条形码。每当调用 scan（）时，Sale 对象都需要在收银机显示屏上显示扫描的商品的名称及其价格。
+> 伪对象是在测试时模拟类的某个合作者的对象。下面是一个例子。在销售点系统中，我们有一个名为 sale 的类(见图 3.1)。它有一个称为 scan()的方法，接受客户想要购买的商品的条形码。每当调用 scan()时，Sale 对象都需要在收银机显示屏上显示扫描的商品的名称及其价格。
 
 How can we test this to see if the right text shows up on the display? Well, if the calls to the cash register's display API are buried deep in the Sale class, it's going to be hard. It might not be easy to sense the effect on the display. But if we can find the place in the code where the display is updated, we can move to the design shown in Figure 3.2.
 
@@ -660,7 +626,7 @@ public class SaleTest extends TestCase
 
 public void testDisplayAnItem() { FakeDisplay display = new FakeDisplay(); Sale sale = new Sale(display);
 
-> public void testDisplayAnItem（）｛FakeDisplay display=new FakeDisplay（）；Sale Sale=new Sale（display）；
+> public void testDisplayAnItem()｛FakeDisplay display=new FakeDisplay()；Sale Sale=new Sale(display)；
 
 sale.scan(\"1\");
 
@@ -716,7 +682,7 @@ public class SaleTest extends TestCase
 
 public void testDisplayAnItem() { **FakeDisplay** display = new FakeDisplay(); Sale sale = new Sale(display);
 
-> public void testDisplayAnItem（）{**FakeDisplay**display=new FakeDisplay（）；Sale Sale=new Sale（display）；
+> public void testDisplayAnItem(){**FakeDisplay**display=new FakeDisplay()；Sale Sale=new Sale(display)；
 
 sale.scan(\"1\");
 
@@ -728,7 +694,7 @@ assertEquals(\"Milk \$3.99\", **display.getLastLine()**);
 
 The Sale class will see the fake display as Display, but in the test, we need to hold on to the object as FakeDisplay. If we don't, we won't be able to call getLastLine() to find out what the sale displays.
 
-> Sale 类会将假显示显示显示为 display，但在测试中，我们需要将对象保留为 FakeDisplay。如果我们不这样做，我们将无法调用 getLastLine（）来了解销售显示的内容。
+> Sale 类会将假显示显示显示为 display，但在测试中，我们需要将对象保留为 FakeDisplay。如果我们不这样做，我们将无法调用 getLastLine()来了解销售显示的内容。
 
 ##### Fakes Distilled
 
@@ -750,11 +716,11 @@ public class SaleTest extends TestCase
 
 public void testDisplayAnItem() { MockDisplay display = new MockDisplay();
 
-> public void testDisplayAnItem（）｛MockDisplay display=new MockDisplay（）；
+> public void testDisplayAnItem()｛MockDisplay display=new MockDisplay()；
 
 display.setExpectation(\"showLine\", \"Milk \$3.99\"); Sale sale = new Sale(display);
 
-> display.setExpected（\“showLine\”，\“Milk\$3.99\”）；销售=新销售（显示）；
+> display.setExpected(\“showLine\”，\“Milk\$3.99\”)；销售=新销售(显示)；
 
 sale.scan(\"1\"); display.verify();
 
@@ -764,7 +730,7 @@ sale.scan(\"1\"); display.verify();
 
 []{#_bookmark43 .anchor}In this test, we create a mock display object. The nice thing about mocks is that we can tell them what calls to expect, and then we tell them to check and see if they received those calls. That is precisely what happens in this test case. We tell the display to expect its showLine method to be called with an argument of \"Milk \$3.99". After the expectation has been set, we just go ahead and use the object inside the test. In this case, we call the method scan(). Afterward, we call the verify() method, which checks to see if all of the expectations have been met. If they haven't, it makes the test fail.
 
-> []｛#_bookmark43.anchor｝在这个测试中，我们创建了一个模拟显示对象。mocks 的好处是，我们可以告诉他们要打什么电话，然后我们告诉他们检查一下，看看他们是否接到了这些电话。这正是这个测试用例中发生的情况。我们告诉显示器期望其 showLine 方法被调用，参数为\“Milk\$3.99”。在设置了期望值之后，我们只需继续在测试中使用该对象。在这种情况下，我们调用方法 scan（）。之后，我们调用 verify（）方法，该方法检查是否满足了所有期望。如果他们没有，测试就会失败。
+> []｛#_bookmark43.anchor｝在这个测试中，我们创建了一个模拟显示对象。mocks 的好处是，我们可以告诉他们要打什么电话，然后我们告诉他们检查一下，看看他们是否接到了这些电话。这正是这个测试用例中发生的情况。我们告诉显示器期望其 showLine 方法被调用，参数为\“Milk\$3.99”。在设置了期望值之后，我们只需继续在测试中使用该对象。在这种情况下，我们调用方法 scan()。之后，我们调用 verify()方法，该方法检查是否满足了所有期望。如果他们没有，测试就会失败。
 
 Mocks are a powerful tool, and a wide variety of mock object frameworks are available. However, mock object frameworks are not available in all languages, and simple fake objects suffice in most situations.
 
@@ -772,7 +738,7 @@ Mocks are a powerful tool, and a wide variety of mock object frameworks are avai
 
 [[]{#_bookmark45 .anchor}]{#_bookmark44 .anchor}[**Chapter 4**](#contents)
 
-> [[]{#_bookmark45.anchor}]{#_blaookmark44.anchor}[**第 4 章**]（#contents）
+> [[]{#_bookmark45.anchor}]{#_blaookmark44.anchor}[**第 4 章**](#contents)
 
 ### [The Seam Model](#contents)
 
@@ -838,7 +804,7 @@ PostReceiveError(SOCKETCALLBACK, SSL_FAILURE);
 
 CreateLibrary(m_hSslDll1,"syncesel1.dll"); CreateLibrary(m_hSslDll2,"syncesel2.dll");
 
-> CreateLibrary（m_hSslDll1，“syncesel1.dll”）；CreateLibrary（m_hSslDll2，“syncesel2.dll”）；
+> CreateLibrary(m_hSslDll1，“syncesel1.dll”)；CreateLibrary(m_hSslDll2，“syncesel2.dll”)；
 
 m_hSslDll1-\>Init(); m_hSslDll2-\>Init();
 
@@ -904,7 +870,7 @@ That change should preserve behavior. We are using this new method to dele-
 
 gate to the global PostReceiveError function using C++'s scoping operator (::). We have a little indirection there, but we end up calling the same global function.
 
-> 使用 C++的作用域运算符（：：）访问全局 PostReceiveError 函数。我们有一点间接性，但我们最终调用了相同的全局函数。
+> 使用 C++的作用域运算符(：：)访问全局 PostReceiveError 函数。我们有一点间接性，但我们最终调用了相同的全局函数。
 
 Okay, now what if we subclass the CAsyncSslRec class and override the
 
@@ -944,7 +910,7 @@ m_bSslInitialized = true;
 
 FreeLibrary(m_hSslDll1); m_hSslDll1=0; FreeLibrary(m_hSslDll2); m_hSslDll2=0;
 
-> 自由图书馆（m_hSslDll1）；m_hSslDll1=0；自由库（m_hSslDll2）；m_hSslDll2=0；
+> 自由图书馆(m_hSslDll1)；m_hSslDll1=0；自由库(m_hSslDll2)；m_hSslDll2=0；
 
 if (!m_bFailureSent) { m_bFailureSent=TRUE;
 
@@ -954,7 +920,7 @@ if (!m_bFailureSent) { m_bFailureSent=TRUE;
 
 CreateLibrary(m_hSslDll1,\"syncesel1.dll\"); CreateLibrary(m_hSslDll2,\"syncesel2.dll\");
 
-> CreateLibrary（m_hSslDll1，\“syncesel1.dll”）；CreateLibrary（m_hSslDll2，\“syncesel2.dll”）；
+> CreateLibrary(m_hSslDll1，\“syncesel1.dll”)；CreateLibrary(m_hSslDll2，\“syncesel2.dll”)；
 
 m_hSslDll1-\>Init(); m_hSslDll2-\>Init();
 
@@ -1012,7 +978,7 @@ class AccountgetBalanceTest : public Test
 
 { public: AccountgetBalanceTest () : Test (\"getBalance\" \"Test\") {} void run (TestResult& result_); }
 
-> ｛public:AccountgetBalanceTest（）：Test（\“getBalance\”\“Test\”）｛｝无效运行（TestResult&result_）；｝
+> ｛public:AccountgetBalanceTest()：Test(\“getBalance\”\“Test\”)｛｝无效运行(TestResult&result_)；｝
 
 AccountgetBalanceInstance;
 
@@ -1030,7 +996,7 @@ if ((expectedTemp) != (actualTemp))
 
 { result_.addFailure (Failure (name_, \"c:\\\\seamexample.cpp\", 24, StringFrom(expectedTemp),
 
-> ｛result_.addFailure（Failure（name_，\“c:\\\\\seamexample.cpp\”，24，StringFrom（expectedTemp），
+> ｛result_.addFailure(Failure(name_，\“c:\\\\\seamexample.cpp\”，24，StringFrom(expectedTemp)，
 
 StringFrom(actualTemp))); return; } }
 
@@ -1060,7 +1026,7 @@ It's not a good idea to use excessive preprocessing in production code
 
 because it tends to decrease code clarity. The conditional compilation directives (#ifdef, #ifndef, #if, and so on) pretty much force you to maintain several different programs in the same source code. Macros (defined with #define) can be used to do some very good things, but they just do simple text replacement. It is easy to create macros that hide terribly obscure bugs.
 
-> 因为它往往会降低代码的清晰度。条件编译指令（#ifdef、#ifndef、#if 等）几乎迫使您在同一源代码中维护几个不同的程序。宏（用#define 定义）可以用来做一些非常好的事情，但它们只是做简单的文本替换。创建宏可以很容易地隐藏非常模糊的错误。
+> 因为它往往会降低代码的清晰度。条件编译指令(#ifdef、#ifndef、#if 等)几乎迫使您在同一源代码中维护几个不同的程序。宏(用#define 定义)可以用来做一些非常好的事情，但它们只是做简单的文本替换。创建宏可以很容易地隐藏非常模糊的错误。
 
 These considerations aside, I'm actually glad that C and C++ have a preprocessor because the preprocessor gives us more seams. Here is an example. In a C program, we have dependencies on a library routine named db_update. The db_update function talks directly to a database. Unless we can substitute in another implementation of the routine, we can't sense the behavior of the function.
 
@@ -1080,7 +1046,7 @@ if (activated) {
 
 if (record-\>dateStamped && record-\>quantity \> MAX_ITEMS) { db_update(account_no, record-\>item);
 
-> if（record-\>dateStamped&&record-\>quantity\>MAX_ITEMS）｛db_update（account_no，record-\>1item）；
+> if(record-\>dateStamped&&record-\>quantity\>MAX_ITEMS)｛db_update(account_no，record-\>1item)；
 
 } else {
 
@@ -1116,7 +1082,7 @@ if (activated) {
 
 if (record-\>dateStamped && record-\>quantity \> MAX_ITEMS) { db_update(account_no, record-\>item);
 
-> if（record-\>dateStamped&&record-\>quantity\>MAX_ITEMS）｛db_update（account_no，record-\>1item）；
+> if(record-\>dateStamped&&record-\>quantity\>MAX_ITEMS)｛db_update(account_no，record-\>1item)；
 
 } else {
 
@@ -1244,13 +1210,13 @@ void CrossPlaneFigure::rerender()
 
 drawText(m_nX, m_nY, m_pchLabel, getClipLen()); drawLine(m_nX, m_nY, m_nX + getClipLen(), m_nY); drawLine(m_nX, m_nY, m_nX, m_nY + getDropLen()); if (!m_bShadowBox) {
 
-> drawText（m_nX，m_nY，m_pchLabel，getClipLen（））；drawLine（m_nX，m_nY，m_nX+getClipLen（），m_nY）；drawLine（m_nX、m_nY、m_nX 和 m_nY+getDropLen（））；if（！m_bShadowBox）{
+> drawText(m_nX，m_nY，m_pchLabel，getClipLen())；drawLine(m_nX，m_nY，m_nX+getClipLen()，m_nY)；drawLine(m_nX、m_nY、m_nX 和 m_nY+getDropLen())；if(！m_bShadowBox){
 
 drawLine(m_nX + getClipLen(), m_nY,
 
 m_nX + getClipLen(), m_nY + getDropLen()); drawLine(m_nX, m_nY + getDropLen(),
 
-> m_nX+getClipLen（）、m_nY+getDropLen（（））；drawLine（m_nX，m_nY+getDropLen（），
+> m_nX+getClipLen()、m_nY+getDropLen(())；drawLine(m_nX，m_nY+getDropLen()，
 
 m_nX + getClipLen(), m_nY + getDropLen());
 
@@ -1324,7 +1290,7 @@ void drawLine(int firstX, int firstY, int secondX, int secondY)
 
 actions.push_back(GraphicsAction(LINE_DRAW, firstX, firstY, secondX, secondY);
 
-> actions.push_back（GraphicsAction（LINE_DRAW，firstX，firstY，secondX，secondY）；
+> actions.push_back(GraphicsAction(LINE_DRAW，firstX，firstY，secondX，secondY)；
 
 }
 
@@ -1346,7 +1312,7 @@ action = actions.pop_front(); LONGS_EQUAL(LABEL_DRAW, action.type);
 
 action = actions.pop_front(); LONGS_EQUAL(0, action.firstX); LONGS_EQUAL(0, action.firstY); LONGS_EQUAL(text.size(), action.secondX);
 
-> action=actions.pop_front（）；LONGSEQUAL（0，action.firstX）；LONGSEQUAL（0，action.firstY）；LONGS_EQUAL（text.size（），action.secondX）；
+> action=actions.pop_front()；LONGSEQUAL(0，action.firstX)；LONGSEQUAL(0，action.firstY)；LONGS_EQUAL(text.size()，action.secondX)；
 
 }
 
@@ -1380,7 +1346,7 @@ cell.Recalculate();
 
 Without knowing what object cell points to, we just don't know. It could be the Recalculate method of ValueCell or the Recalculate method of FormulaCell. It could even be the Recalculate method of some other class that doesn't inherit from Cell (if that's the case, cell was a particularly cruel name to use for that variable!). If we can change which Recalculate is called in that line of code without changing the code around it, that call is a seam.
 
-> 在不知道对象单元格指向什么的情况下，我们就是不知道。它可以是 ValueCell 的 Recalculate 方法或 FormulaCell 的重新计算方法。它甚至可能是其他类的 Recalculate 方法，该方法不是从 Cell 继承的（如果是这样的话，Cell 对该变量来说是一个特别残酷的名称！）。如果我们可以在不更改代码的情况下更改代码行中调用的 Recalculate，那么该调用就是一个接缝。
+> 在不知道对象单元格指向什么的情况下，我们就是不知道。它可以是 ValueCell 的 Recalculate 方法或 FormulaCell 的重新计算方法。它甚至可能是其他类的 Recalculate 方法，该方法不是从 Cell 继承的(如果是这样的话，Cell 对该变量来说是一个特别残酷的名称！)。如果我们可以在不更改代码的情况下更改代码行中调用的 Recalculate，那么该调用就是一个接缝。
 
 In object-oriented languages, not all method calls are seams. Here is an example of a call that isn't a seam:
 
@@ -1512,7 +1478,7 @@ Recalculate(cell);
 
 public class TestingCustomSpreadsheet extends CustomSpreadsheet { protected void Recalculate(Cell cell) {
 
-> 公共类 TestingCustomSpreadsheet 扩展 CustomSpreadsheet｛protected void Recalculate（单元格）{
+> 公共类 TestingCustomSpreadsheet 扩展 CustomSpreadsheet｛protected void Recalculate(单元格){
 
 \...
 
@@ -1546,7 +1512,7 @@ m_bSslInitialized = true;
 
 FreeLibrary(m_hSslDll1); m_hSslDll1=0; FreeLibrary(m_hSslDll2); m_hSslDll2=0;
 
-> 自由图书馆（m_hSslDll1）；m_hSslDll1=0；自由库（m_hSslDll2）；m_hSslDll2=0；
+> 自由图书馆(m_hSslDll1)；m_hSslDll1=0；自由库(m_hSslDll2)；m_hSslDll2=0；
 
 if (!m_bFailureSent) { m_bFailureSent=TRUE;
 
@@ -1556,7 +1522,7 @@ if (!m_bFailureSent) { m_bFailureSent=TRUE;
 
 CreateLibrary(m_hSslDll1,\"syncesel1.dll\"); CreateLibrary(m_hSslDll2,\"syncesel2.dll\");
 
-> CreateLibrary（m_hSslDll1，\“syncesel1.dll”）；CreateLibrary（m_hSslDll2，\“syncesel2.dll”）；
+> CreateLibrary(m_hSslDll1，\“syncesel1.dll”)；CreateLibrary(m_hSslDll2，\“syncesel2.dll”)；
 
 m_hSslDll1-\>Init(); m_hSslDll2-\>Init(); return true;
 
@@ -1614,13 +1580,13 @@ When you get used to seeing code in terms of seams, it is easier to see how to t
 
 [[[]{#_bookmark60 .anchor}]{#_bookmark59 .anchor}]{#_bookmark58 .anchor}[**Chapter 5**](#contents)
 
-> [[]]｛#_bookmark60.anchor｝]｛#_bookmark59.anchor}]｛#bookmark58.anchor}[**第 5 章**]（#contents）
+> [[]]｛#_bookmark60.anchor｝]｛#_bookmark59.anchor}]｛#bookmark58.anchor}[**第 5 章**](#contents)
 
 ### [Tools](#contents)
 
 What tools do you need when you work with legacy code? You need an editor (or an IDE) and your build system, but you also need a testing framework. If there are refactoring tools for your language, they can be very helpful as well.
 
-> 使用遗留代码时，您需要什么工具？您需要一个编辑器（或 IDE）和构建系统，但也需要一个测试框架。如果您的语言有重构工具，它们也会非常有用。
+> 使用遗留代码时，您需要什么工具？您需要一个编辑器(或 IDE)和构建系统，但也需要一个测试框架。如果您的语言有重构工具，它们也会非常有用。
 
 In this chapter, I describe some of the tools that are currently available and the role that they can play in your legacy code work.
 
@@ -1638,7 +1604,7 @@ With all of these, tools it seems that refactoring should be much easier. It is,
 
 in some environments. Unfortunately, the refactoring support in many of these tools varies. Let's remember what refactoring is again. Here is Martin Fowler's definition from _Refactoring: Improving the Design of Existing Code_ (AddisonWesley 1999):
 
-> 在某些环境中。不幸的是，这些工具中的许多工具对重构的支持各不相同。让我们再次记住什么是重构。以下是 Martin Fowler 在《重构：改进现有代码的设计》（Addison-Wesley 1999）中的定义：
+> 在某些环境中。不幸的是，这些工具中的许多工具对重构的支持各不相同。让我们再次记住什么是重构。以下是 Martin Fowler 在《重构：改进现有代码的设计》(Addison-Wesley 1999)中的定义：
 
 ####### 45
 
@@ -1752,7 +1718,7 @@ Each method in a test class defines a test if it has a signature of this form:
 
 void testXXX(), where XXX is the name you want to give the test. Each test method can contain code and assertions. In the previous testEmpty method, there is code to create a new Formula object and call its value method. There is also assertion code that checks to see if that value is equal to 0. If it is, the test passes. If it isn't, the test fails.
 
-> void testXXX（），其中 XXX 是要为测试命名的名称。每个测试方法都可以包含代码和断言。在前面的 testEmpty 方法中，有一段代码用于创建一个新的 Formula 对象并调用其值方法。还有断言代码，用于检查该值是否等于 0。如果是，则测试通过。如果不是，则测试失败。
+> void testXXX()，其中 XXX 是要为测试命名的名称。每个测试方法都可以包含代码和断言。在前面的 testEmpty 方法中，有一段代码用于创建一个新的 Formula 对象并调用其值方法。还有断言代码，用于检查该值是否等于 0。如果是，则测试通过。如果不是，则测试失败。
 
 In a nutshell, here is what happens when you run JUnit tests. The JUnit test runner loads a test class like the one shown previously, and then it uses reflection to find all of the test methods. What it does next is kind of sneaky. It creates a completely separate object for each one of those test methods. From the previous code, it creates two of them: an object whose only job is to run the testEmpty method, and an object whose only job is to run the testDigit object. If you are wondering what the classes of the objects are, in both cases, it is the same: FormulaTest. Each object is configured to run exactly one of the test methods on FormulaTest. The key thing is that we have a completely separate object for each method. There is no way that they can affect each other. Here is an example.
 
@@ -1766,7 +1732,7 @@ employee = new Employee(\"Fred\", 0, 10);
 
 TDate cardDate = new TDate(10, 10, 2000); employee.addTimeCard(new TimeCard(cardDate,40));
 
-> TDate cardDate=新 TDate（102000）；employee.addTimeCard（新 TimeCard（cardDate，40））；
+> TDate cardDate=新 TDate(102000)；employee.addTimeCard(新 TimeCard(cardDate，40))；
 
 }
 
@@ -1776,7 +1742,7 @@ TDate newCardDate = new TDate(11, 10, 2000);
 
 employee.addTimeCard(new TimeCard(newCardDate, 50)); assertTrue(employee.hasOvertimeFor(newCardDate));
 
-> employee.addTimeCard（新 TimeCard（newCardDate，50））；assertTrue（employee.hasOvertimeFor（newCardDate））；
+> employee.addTimeCard(新 TimeCard(newCardDate，50))；assertTrue(employee.hasOvertimeFor(newCardDate))；
 
 []{#_bookmark67 .anchor}}
 
@@ -1792,7 +1758,7 @@ In the EmployeeTest class, we have a special method named setUp. The setUp
 
 method is defined in TestCase and is run in each test object before the test method is run. The setUp method allows us to create a set of objects that we'll use in a test. That set of objects is created the same way before each test's execution. In the object that runs testNormalPay, an employee created in setUp is checked to see if it calculates pay correctly for one timecard, the one added in setUp. In the object that runs testOvertime, an employee created in setUp for that object gets an additional timecard, and there is a check to verify that the second timecard triggers an overtime condition. The setUp method is called for each object of the class EmployeeTest, and each of those objects gets its own set of objects created via setUp. If you need to do anything special after a test finishes executing, you can override another method named tearDown, defined in TestCase. It runs after the test method for each object
 
-> 方法在 TestCase 中定义，并在运行测试方法之前在每个测试对象中运行。setUp 方法允许我们创建一组将在测试中使用的对象。在执行每个测试之前，以相同的方式创建该组对象。在运行 testNormalPay 的对象中，将检查在 setUp 中创建的员工，以查看其是否正确计算了一张考勤卡（即在 setUp 添加的考勤卡）的工资。在运行 testOvertime 的对象中，在 setUp 中为该对象创建的员工将获得一个额外的时间卡，并进行检查以验证第二个时间卡是否触发加班条件。为类 EmployeeTest 的每个对象调用 setUp 方法，并且这些对象中的每个对象都有自己的一组通过 setUp 创建的对象。如果在测试执行完成后需要做任何特殊的事情，可以覆盖 TestCase 中定义的另一个名为 tearDown 的方法。它在每个对象的测试方法之后运行
+> 方法在 TestCase 中定义，并在运行测试方法之前在每个测试对象中运行。setUp 方法允许我们创建一组将在测试中使用的对象。在执行每个测试之前，以相同的方式创建该组对象。在运行 testNormalPay 的对象中，将检查在 setUp 中创建的员工，以查看其是否正确计算了一张考勤卡(即在 setUp 添加的考勤卡)的工资。在运行 testOvertime 的对象中，在 setUp 中为该对象创建的员工将获得一个额外的时间卡，并进行检查以验证第二个时间卡是否触发加班条件。为类 EmployeeTest 的每个对象调用 setUp 方法，并且这些对象中的每个对象都有自己的一组通过 setUp 创建的对象。如果在测试执行完成后需要做任何特殊的事情，可以覆盖 TestCase 中定义的另一个名为 tearDown 的方法。它在每个对象的测试方法之后运行
 
 When you first see an xUnit harness, it is bound to look a little strange. Why do test-case classes have setUp and tearDown at all? Why can't we just create the objects we need in the constructor? Well, we could, but remember what the test runner does with test case classes. It goes to each test case class and creates a set of objects, one for each test method. That is a large set of objects, but it isn't so bad if those objects haven't allocated what they need yet. By placing code in setUp to create what we need just when we need it, we save quite a bit on resources. In addition, by delaying setUp, we can also run it at a time when we can detect and report any problems that might happen during setup.
 
@@ -1812,11 +1778,11 @@ TestSuite \*suite = new TestSuite;
 
 suite.addTest(new TestCaller\<EmployeeTest\>(\"testNormalPay\", testNormalPay));
 
-> suite.addTest（new TestCaller\<EmployeeTest\>（\“testNormalPay\”，testNormalPay））；
+> suite.addTest(new TestCaller\<EmployeeTest\>(\“testNormalPay\”，testNormalPay))；
 
 suite.addTest(new TestCaller\<EmployeeTest\>(\"testOvertime\", testOvertime));
 
-> suite.addTest（new TestCaller\<EmployeeTest\>（\“testOvertime”，testOvertime））；
+> suite.addTest(new TestCaller\<EmployeeTest\>(\“testOvertime”，testOvertime))；
 
 return suite;
 
@@ -1838,7 +1804,7 @@ using namespace std; TEST(testNormalPay,Employee)
 
 auto_ptr\<Employee\> employee(new Employee(\"Fred\", 0, 10)); LONGS_EQUALS(400, employee-\>getPay());
 
-> auto_ptr\<Employee\>Employee（新员工（\“Fred\”，0，10））；LONGSEQUALS（400，employee-\>getPay（））；
+> auto_ptr\<Employee\>Employee(新员工(\“Fred\”，0，10))；LONGSEQUALS(400，employee-\>getPay())；
 
 }
 
@@ -1850,7 +1816,7 @@ for equality. It behaves the same way that assertEquals does in JUnit, but it's 
 
 The TEST macro does some nasty things behind the scenes. It creates a subclass of a testing class and names it by pasting the two arguments together (the name of the test and the name of the class being tested). Then it creates an instance of that subclass that is configured to run the code in braces. The instance is static; when the program loads, it adds itself to a static list of test objects. Later a test runner can rip through the list and run each of the tests.
 
-> TEST 宏在幕后做了一些令人讨厌的事情。它创建一个测试类的子类，并通过将两个参数（测试的名称和要测试的类的名称）粘贴在一起来命名它。然后，它创建该子类的一个实例，该实例被配置为运行大括号中的代码。实例是静态的；当程序加载时，它将自己添加到测试对象的静态列表中。稍后，测试运行程序可以遍历列表并运行每个测试。
+> TEST 宏在幕后做了一些令人讨厌的事情。它创建一个测试类的子类，并通过将两个参数(测试的名称和要测试的类的名称)粘贴在一起来命名它。然后，它创建该子类的一个实例，该实例被配置为运行大括号中的代码。实例是静态的；当程序加载时，它将自己添加到测试对象的静态列表中。稍后，测试运行程序可以遍历列表并运行每个测试。
 
 After I wrote this little framework, I decided not to release it because the code in the macro wasn't terribly clear, and I spend a lot of time convincing people to write clearer code. A friend of mine, Mike Hill, ran into some of the same issues before we met and created a Microsoft-specific testing framework called TestKit that handled registration the same way. Emboldened by Mike, I started to reduce the number of late C++ features used in my little framework, and then I released it. (Those issues had been a big issue in CppUnit. Nearly
 
@@ -1858,7 +1824,7 @@ After I wrote this little framework, I decided not to release it because the cod
 
 []{#_bookmark69 .anchor}every day I received e-mail from people who couldn't use templates or the standard library, or who had exceptions with their C++ compiler.)
 
-> []｛#_bookmark69.anchor｝我每天都会收到一些人发来的电子邮件，他们不能使用模板或标准库，或者他们的 C++编译器有异常。）
+> []｛#_bookmark69.anchor｝我每天都会收到一些人发来的电子邮件，他们不能使用模板或标准库，或者他们的 C++编译器有异常。)
 
 Both CppUnit and CppUnitLite are adequate as testing harnesses. Tests written using CppUnitLite are a little briefer, so I use it for the C++ examples in this book.
 
@@ -1878,13 +1844,13 @@ Imports NUnit.Framework
 
 \<Test()\> Public Sub TestRunValid() Dim display As New MockDisplay() Dim reader As New MockATMReader()
 
-> \<Test（）\>Public Sub-TestRunValidat（）Dim display As New MockDisplay（
+> \<Test()\>Public Sub-TestRunValidat()Dim display As New MockDisplay(
 
 Dim logon As New LogOn(display, reader) logon.Run()
 
 AssertEquals(\"Please Enter Card\", display.LastDisplayedText) AssertEquals(\"MainMenu\",logon.GetNextTransaction().GetType.Name)
 
-> AssertEquals（\“Please Enter Card”，display.LastDisplayedText）AssertEqual（\“MainMenu”，logon.GetNextTransaction（）.GetType.Name）
+> AssertEquals(\“Please Enter Card”，display.LastDisplayedText)AssertEqual(\“MainMenu”，logon.GetNextTransaction().GetType.Name)
 
 End Sub
 
@@ -1892,7 +1858,7 @@ End Class
 
 \<TestFixture()\> and \<Test()\> are attributes that mark LogonTest as a test class and TestRunValid as a test method, respectively.
 
-> \＜ TestFixture（）\＞和＜ Test（）\＜是分别将 LogonTest 标记为测试类和将 TestRunValid 标记为测试方法的属性。
+> \＜ TestFixture()\＞和＜ Test()\＜是分别将 LogonTest 标记为测试类和将 TestRunValid 标记为测试方法的属性。
 
 ##### Other xUnit Frameworks
 
